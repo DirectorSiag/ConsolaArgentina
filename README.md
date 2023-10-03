@@ -10,6 +10,7 @@ Programa en C++ que recibe y decodifica los paquetes de la FPGA.
 
 - ### void cargar_matriz(int colorf)
     *colorf:* número entero entre 0 y 5. Es la amplitud del dato que se mapea a una escala de color para su representación en el gráfico.
+  
     Función que escala y envía los puntos al programa en javascript de acuerdo a un canvas de 800x800px. Envía sólo las diferencias.
 
 
