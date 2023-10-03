@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self' 'unsafe-eval'">
+    <!-- Mantener esto para que funcione el servidor -->
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>TDC</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="body" id="body">
+    <div class="radios">
+      <input type="radio" name="escala" value="8" > 8
+      <input type="radio" name="escala" value="16" > 16
+      <input type="radio" name="escala" value="32" > 32
+      <input type="radio" name="escala" value="64" > 64
+      <input type="radio" name="escala" value="128" checked> 128
+      <input type="radio" name="escala" value="256"> 256
+    </div>
+    <div class="labels">
+      <label><input type="checkbox" id="chkSintetico" name="sintetico" > Sintetico</label><br>
+      <label><input type="checkbox" id="chkCrudo" name="crudo" checked> VASR</label><br>
+    </div>
+    <br><br><br><br><br>
+
+    <div class="checker false">
+      <img class="cruz" src="images/cruz.png" alt="cruz">
+      <img class="tilde" src="images/tilde.png" alt="tilde">
+    </div>
+    
+    <div class="labels">
+      <div class="label">
+        <p>Azimut</p>
+        <input type="text" id="azimut" maxlength="5" placeholder="359.9">
+      </div>
+      <div class="label">
+        <p>Distancia</p>
+        <input type="text" id="distancia" maxlength="5" placeholder="256.0">
+      </div>
+    </div>
+    <br/><br/>
+
+    <div class="open_manual_button">
+      <p>Abrir manual de usuario</p>
+    </div>
+    <br/><br/>
+    
+     <div class="contenedor_crudo">
+      <div>
+        <canvas id="canvas_crudo" width="800" height="800"></canvas>
+        <canvas id="canvas_puntos" width="400" height="400"></canvas>
+      </div>
+      
+    </div>   
+    <div class="contenedor_sintetico">      
+      <canvas id="canvas_sintetico" width="400" height="400"></canvas>
+    </div>
+
+    
+
+    <!-- <div class="polar-graph"></div> -->
+    
+    <script src="js/script.js"></script>
+
+  </body>
+  <!--<script src="./renderer.js"></script>-->
+</html>
