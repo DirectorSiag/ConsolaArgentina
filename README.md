@@ -26,5 +26,5 @@ Web worker cuya función es crear el socket de conexión con la aplicación en C
 Hilo principal que crea un web worker para recibir datos y enviarlos a graficar.
 
 - ### function graficarPunto(data)
-    Función que recibe un objeto JSON con la coordenada x, la coordenada y el color de un punto, y lo grafica utilizando el elemento *canvas*.
+    Función que recibe un objeto JSON con la coordenada *x*, la coordenada *y* y el *color* de un punto, y lo grafica utilizando el elemento *canvas*.
 
