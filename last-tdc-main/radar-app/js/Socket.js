@@ -3,31 +3,6 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const io_client = require("socket.io-client");
 const port = process.env.PORT || 5500;
-const net = require('net');
-//const { Worker } = require('worker_threads');
-const EventEmitter = require('events');
-
-class DataEmitter extends EventEmitter {}
-
-const dataEmitter = new DataEmitter();
-
-var filas= 10;//4096;
-var columnas= 10; //8183;
-var matrizPuntos = [];
-
-for(var i=0; i<filas; i++) {
-    matrizPuntos[i] = new Array(columnas);
-}
-
-var param1 = matrizPuntos;
-var param2 = "";
-
-
-var params = {
-    param1: param1,
-    param2: param2
-};
-
 
 class Socket {
 
@@ -49,59 +24,13 @@ class Socket {
         this.read_callback = read_callback;
 
         this.connect = function() {
-
             if (mode==1) {
                 // Server Mode
                 this.server_mode();
             } else if (mode==0){
                 // Client Mode
                 this.client_mode();
-            } else if (mode==3){
-                this.modoCpp();
-            }
-        }
-
-        this.modoCpp = function(){
-
-           // let matrizPuntos  = [];
-            const server = net.createServer(socket => {
-                console.log('Cliente conectado.');
-              
-                
-                
-                socket.on('data', data => {     
-                    let angulo = data.toString().split(",")[0]; //fila
-                    let distancia = data.toString().split(",")[1]; //columna
-                    let color = data.toString().split(",")[2]; //color
-
-                    if (angulo != "H"){
-                        matrizPuntos[angulo][distancia] = color;
-                    }
-
-                    params.param1= matrizPuntos;
-                    params.param2= angulo;
-
-                   // console.log('dis:' + distancia + " ang: " + angulo + " color: " + color);
- 
-                    // Emitir evento cuando los datos se procesan
-                    dataEmitter.emit('dataProcessed', params);
-
-                    //data='';
-                 // this.read_callback(data.toString());
-                 
-                });
-              
-                socket.on('end', () => {
-                  console.log('Client disconnected.');
-                });
-              });
-              
-             // const port = 5500;
-              server.listen(socket_port, () => {
-                console.log('Server listening on port', socket_port);
-              });
-              
-             
+            } 
         }
 
         this.server_mode = function() {
